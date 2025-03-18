@@ -2,7 +2,7 @@
 /////////////////////
 
 // Ethers JS:
-// https://docs.ethers.org/v6/
+// https://docs.ethers.or  g/v6/
 
 function exit() {
     console.log('Exercise ' + exercise + ' completed.');
@@ -20,6 +20,13 @@ const ethers = require("ethers");
 // and the mnenomic phrase.
 // Hint: ethers.Wallet.createRandom();
 
+wallet=ethers.Wallet.createRandom();
+
+console.log();
+console.log("Address:", wallet.address);
+console.log("Private key:", wallet.privateKey);
+console.log("Mnemonic:", wallet.mnemonic.phrase);
+console.log();
 
 // exit();
 
@@ -38,7 +45,7 @@ let baseDevPath = "m/44'/60'/0'/0/";
 // https://vault12.com/securemycrypto/crypto-security-basics/what-is-bip39/
 
 
-console.log("Derivation path:", wallet.path);
+console.log("Derivation path:", wallet.baseDevPath);
 
 // Your code here!
 
@@ -50,10 +57,14 @@ console.log("Derivation path:", wallet.path);
 console.log();
 exercise = 2;
 
+
+
 // From the same wallet, you can derive a deterministic sequence of addresses.
 // First, pick a mnemonic, then create a hierarchical deterministic wallet, 
 // finally print the first 10 addresses and private keys generated.
 // Hint: You need to append an index to the derivation path.
+wallet2 = new ethers.Wallet(wallet.privateKey
+)
 
 // Your code here!
 
