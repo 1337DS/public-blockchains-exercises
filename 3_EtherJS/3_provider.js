@@ -16,12 +16,40 @@ const path = require('path');
 
 // Hint: As you did in file 1_wallet.
 
-// Your code here!
+//const dotenv = require("dotenv");
+const ethers = require("ethers");
+let pathToDotEnv = path.resolve(process.cwd(), '.env');
+
+//pathToDotEnv = path.join(__dirname, '..', '..', '.env');
+// console.log(pathToDotEnv);
+
+require("dotenv").config({ path: pathToDotEnv });
+
+// Get write access as an account by getting the signer
+
+//const url="https://eth-mainnet.g.alchemy.com/v2/"
+//
+// const mainnetUrl = {url} + {process.env.ALCHEMY_KEY};
+
+const providerKey = process.env.ALCHEMY_KEY;
+const mainnetUrl = `${process.env.ALCHEMY_MAINNET_API_URL}${providerKey}`;
+console.log(mainnetUrl);
+
+async function getwriteaccess() {
+    
+provider = new ethers.JsonRpcProvider(mainnetUrl)
+signer = await provider.getSigner()
+console.log(signer);
+
+}
+
+getwriteaccess();
 
 
 // Exercise 1. Connect to Mainnet (a.k.a welcome async!).
 /////////////////////////////////////////////////////////
 
+    
 // Whenever you interact with a blockchain you are in the "async" domain. 
 
 // In JavaScript, you generally use "promises" to handle asynchronous   
@@ -46,7 +74,15 @@ const path = require('path');
 // parameters it needs (nested hint: you need something from the .env file).
 
 
-// Your code here!
+
+async function getwriteaccess() {
+    
+provider = new ethers.JsonRpcProvider(mainnetUrl)
+signer = await provider.getSigner()
+console.log(signer)
+
+}
+
 
 
 // b. Verify that the network's name is "mainnet" and the chain id is 1.
@@ -286,6 +322,7 @@ const linkAddress = '0x326c977e6efc84e512bb9c30f76e30c160ed06fb';
 // the LINK ABI is stored in this directory, under "link_abi.json";
 
 const linkABI = require('./link_abi.json');
+const { sign } = require('crypto');
 
 // Now your task. Get the balance for LINK for "unima.eth" and "vitalik.eth".
 // Hint: you need first to create a Contract object via `ethers.Contract`, 

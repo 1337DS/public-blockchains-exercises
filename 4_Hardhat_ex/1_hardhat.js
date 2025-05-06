@@ -8,10 +8,30 @@
 // Hint: As you did multiple times now.
 
 // Your code here!
+const path = require('path');
+const ethers = require("ethers");
+let pathToDotEnv = path.resolve(process.cwd(), '.env');
+console.log(pathToDotEnv);
 
-
+//pathToDotEnv = path.join(__dirname, '..', '..', '.env');
+// console.log(pathToDotEnv);
 // Exercise 1. Create a JSON RPC Provider for the Hardhat blockchain.
 /////////////////////////////////////////////////////////////////////
+
+const providerKey = "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
+const localnetURL ="http://127.0.0.1:8545/"; 
+
+async function getwriteaccess() {
+    
+provider = new ethers.JsonRpcProvider(localnetURL)
+signer = await provider.getSigner()
+console.log(signer);
+}
+getwriteaccess()
+
+
+
+
 
 // Hint: you will find the info printed to console after you start the hardhat
 // blockchain.
